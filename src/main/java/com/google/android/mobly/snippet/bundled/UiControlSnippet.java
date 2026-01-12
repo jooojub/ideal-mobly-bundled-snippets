@@ -69,6 +69,18 @@ public class UiControlSnippet implements Snippet {
         obj.click();
     }
 
+    @Rpc(description = "Click UI element by content-desc")
+    public void clickByDesc(String contentDesc) throws UiObjectNotFoundException {
+        UiObject obj = mDevice.findObject(new UiSelector().description(contentDesc));
+        obj.click();
+    }
+
+    @Rpc(description = "Click UI element containing specific content-desc")
+    public void clickByDescContain(String contentDesc) throws UiObjectNotFoundException {
+        UiObject obj = mDevice.findObject(new UiSelector().descriptionContains(contentDesc));
+        obj.click();
+    }
+
     @Override
     public void shutdown() {}
 }
