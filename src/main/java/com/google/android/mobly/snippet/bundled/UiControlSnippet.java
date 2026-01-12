@@ -20,6 +20,7 @@ import androidx.test.platform.app.InstrumentationRegistry;
 import androidx.test.uiautomator.UiDevice;
 import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiObjectNotFoundException;
+import androidx.test.uiautomator.UiScrollable;
 import androidx.test.uiautomator.UiSelector;
 import com.google.android.mobly.snippet.Snippet;
 import com.google.android.mobly.snippet.rpc.Rpc;
@@ -79,6 +80,54 @@ public class UiControlSnippet implements Snippet {
     public void clickByDescContain(String contentDesc) throws UiObjectNotFoundException {
         UiObject obj = mDevice.findObject(new UiSelector().descriptionContains(contentDesc));
         obj.click();
+    }
+
+    @Rpc(description = "Scroll to UI element by resource-id")
+    public void scrollToId(String resourceId) throws UiObjectNotFoundException {
+        UiScrollable scrollable = new UiScrollable(new UiSelector().scrollable(true));
+        scrollable.scrollIntoView(new UiSelector().resourceId(resourceId));
+    }
+
+    @Rpc(description = "Scroll to UI element by text")
+    public void scrollToText(String text) throws UiObjectNotFoundException {
+        UiScrollable scrollable = new UiScrollable(new UiSelector().scrollable(true));
+        scrollable.scrollIntoView(new UiSelector().text(text));
+    }
+
+    @Rpc(description = "Scroll to UI element by Class Name")
+    public void scrollToClassName(String className) throws UiObjectNotFoundException {
+        UiScrollable scrollable = new UiScrollable(new UiSelector().scrollable(true));
+        scrollable.scrollIntoView(new UiSelector().className(className));
+    }
+
+    @Rpc(description = "Scroll to UI element by Class Name and Text")
+    public void scrollToClassNameAndText(String className, String text) throws UiObjectNotFoundException {
+        UiScrollable scrollable = new UiScrollable(new UiSelector().scrollable(true));
+        scrollable.scrollIntoView(new UiSelector().className(className).text(text));
+    }
+
+    @Rpc(description = "Scroll to UI element containing specific text")
+    public void scrollToTextContain(String text) throws UiObjectNotFoundException {
+        UiScrollable scrollable = new UiScrollable(new UiSelector().scrollable(true));
+        scrollable.scrollIntoView(new UiSelector().textContains(text));
+    }
+
+    @Rpc(description = "Scroll to UI element by Class Name and containing specific text")
+    public void scrollToClassNameAndTextContain(String className, String text) throws UiObjectNotFoundException {
+        UiScrollable scrollable = new UiScrollable(new UiSelector().scrollable(true));
+        scrollable.scrollIntoView(new UiSelector().className(className).textContains(text));
+    }
+
+    @Rpc(description = "Scroll to UI element by content-desc")
+    public void scrollToDesc(String contentDesc) throws UiObjectNotFoundException {
+        UiScrollable scrollable = new UiScrollable(new UiSelector().scrollable(true));
+        scrollable.scrollIntoView(new UiSelector().description(contentDesc));
+    }
+
+    @Rpc(description = "Scroll to UI element containing specific content-desc")
+    public void scrollToDescContain(String contentDesc) throws UiObjectNotFoundException {
+        UiScrollable scrollable = new UiScrollable(new UiSelector().scrollable(true));
+        scrollable.scrollIntoView(new UiSelector().descriptionContains(contentDesc));
     }
 
     @Override
