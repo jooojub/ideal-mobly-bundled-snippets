@@ -130,6 +130,12 @@ public class UiControlSnippet implements Snippet {
         scrollable.scrollIntoView(new UiSelector().descriptionContains(contentDesc));
     }
 
+    @Rpc(description = "Check if UI element is checked by resource-id")
+    public boolean isCheckedById(String resourceId) throws UiObjectNotFoundException {
+        UiObject obj = mDevice.findObject(new UiSelector().resourceId(resourceId));
+        return obj.isChecked();
+    }
+
     @Override
     public void shutdown() {}
 }
