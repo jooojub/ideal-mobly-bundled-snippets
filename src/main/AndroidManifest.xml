@@ -67,6 +67,7 @@
                            com.google.android.mobly.snippet.bundled.UiControlSnippet,
                            com.google.android.mobly.snippet.bundled.WifiAwareManagerSnippet,
                            com.google.android.mobly.snippet.bundled.WifiManagerSnippet,
+                           com.google.android.mobly.snippet.bundled.ImageSnippet,
                            com.google.android.mobly.snippet.bundled.StorageSnippet" />
     </application>
 
